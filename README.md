@@ -74,11 +74,6 @@ iOS分页控制器,只需传入标题数组和控制器类名数组即可.
 * -(void)reloadDataWith:(NSArray *)titleArray andSubViewdisplayClasses:(NSArray *)classes withParams:(NSArray *)params;
 
 
-##问题反馈
-* QQ:329735967
-* email:329735967@qq.com
-
-
 ##V1.x版本说明
 
 紧急适配iOS7,之前的问题是源码中调用一个系统api,该api仅支持iOS8.
