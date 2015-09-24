@@ -17,8 +17,6 @@
     if (self) {
         _titleLabel = [[UILabel alloc] init];
         _titleLabel.textAlignment = NSTextAlignmentCenter;
-        _titleLabel.translatesAutoresizingMaskIntoConstraints = NO;
-        
         [self.contentView addSubview:_titleLabel];
     }
     return self;
