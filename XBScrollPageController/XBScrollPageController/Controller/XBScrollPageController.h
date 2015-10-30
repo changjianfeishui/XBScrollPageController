@@ -50,4 +50,11 @@
  *  可以传递参数的刷新方法
  */
 - (void)reloadDataWith:(NSArray *)titleArray andSubViewdisplayClasses:(NSArray *)classes withParams:(NSArray *)params;
+
+/**
+ *  选中index位置的标签[0...titleArray.count-1]
+ *
+ */
+- (void)selectTagByIndex:(NSInteger)index animated:(BOOL)animated;
+
 @end

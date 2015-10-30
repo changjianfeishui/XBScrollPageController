@@ -34,6 +34,9 @@
 @property (nonatomic,strong) NSTimer *graceTimer;
 @property (nonatomic,strong) UIView *selectionIndicator;  /**< 选择指示器  */
 
+
+
+
 @end
 
 @implementation XBScrollPageController
@@ -59,7 +62,6 @@
     if (self.tagTitleModelArray.count!=0) {
         [self resetSelectedIndex];
     }
-    
 }
 
 - (void)viewDidLayoutSubviews
@@ -211,7 +213,6 @@
         
         UICollectionViewCell *cell = [collectionView cellForItemAtIndexPath:indexPath];
 
-        
         if (self.selectionIndicator.centerX != cell.centerX) {
             [UIView animateWithDuration:0.3 animations:^{
                 self.selectionIndicator.centerX = cell.centerX;
@@ -286,6 +287,15 @@
     self.params = params;
     
     [self resetSelectedIndex];
+}
+
+- (void)selectTagByIndex:(NSInteger)index animated:(BOOL)animated
+{
+    self.selectedIndex = index;
+    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.001f * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+        [self.tagCollectionView selectItemAtIndexPath:[NSIndexPath indexPathForItem:index inSection:0] animated:animated scrollPosition:UICollectionViewScrollPositionCenteredHorizontally];
+        
+        [self.pageCollectionView scrollToItemAtIndexPath:[NSIndexPath indexPathForItem:index inSection:0] atScrollPosition:UICollectionViewScrollPositionRight animated:animated];    });
 }
 
 

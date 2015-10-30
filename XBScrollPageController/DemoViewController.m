@@ -18,9 +18,6 @@
 //重载init方法
 - (instancetype)init
 {
-
-    
-    
     if (self = [super initWithTagViewHeight:49])
     {
         
@@ -77,6 +74,13 @@
     
     [self reloadDataWith:titleArray andSubViewdisplayClasses:classNames withParams:params];
     
+    
+}
+
+- (void)viewWillAppear:(BOOL)animated
+{
+    [super viewWillAppear:animated];
+    [self selectTagByIndex:2 animated:NO];
 
 }
 
