@@ -88,7 +88,7 @@
     self.selectedTitleColor = [UIColor redColor];
     self.selectedIndicatorColor = [UIColor redColor];
     self.tagItemSize = CGSizeZero;
-    self.tagItemGap = 10.f;
+//    self.tagItemGap = 10.f;
     self.selectedIndex = -1;
 }
 
@@ -150,6 +150,7 @@
         cell.tagTitleModel = tagTitleModel;
         [cell setSelected:(self.selectedIndex == index)?YES:NO];
         cell.backgroundColor = self.backgroundColor;
+//        cell.backgroundColor = XBRandomColor;
         
         return cell;
     }else{                                              //页面
@@ -182,12 +183,12 @@
 - (CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout*)collectionViewLayout sizeForItemAtIndexPath:(NSIndexPath *)indexPath;
 {
     NSInteger index = indexPath.item;
+    XBTagTitleModel *tagTitleModel = self.tagTitleModelArray[index];
     if ([self isTagView:collectionView]) {     //标签
         if (CGSizeEqualToSize(CGSizeZero, self.tagItemSize)) {      //如果用户没有手动设置tagItemSize
-            XBTagTitleModel *tagTitleModel = self.tagTitleModelArray[index];
             NSString *title = tagTitleModel.tagTitle;
             CGSize titleSize = [self sizeForTitle:title withFont:((tagTitleModel.normalTitleFont.pointSize >= tagTitleModel.selectedTitleFont.pointSize)?tagTitleModel.normalTitleFont:tagTitleModel.selectedTitleFont)];
-            return CGSizeMake(titleSize.width + self.tagItemGap * 0.5, self.tagViewHeight);;
+            return CGSizeMake(titleSize.width, self.tagViewHeight);  //+ self.tagItemGap * 0.5
         }else
         {
             return self.tagItemSize;
@@ -209,14 +210,34 @@
         NSInteger gap = indexPath.item - self.selectedIndex;
         
         self.selectedIndex = indexPath.item;
-        
-        
-        UICollectionViewCell *cell = [collectionView cellForItemAtIndexPath:indexPath];
 
-        if (self.selectionIndicator.x != cell.x) {
-            [UIView animateWithDuration:0.3 animations:^{
-                self.selectionIndicator.x = cell.x;
+        UICollectionViewCell *cell = [collectionView cellForItemAtIndexPath:indexPath];
+        if (!cell) {
+            if ([self isZeroSize:self.tagItemSize]) {
+                XBTagTitleModel *tagTitleModel = self.tagTitleModelArray[0];
+                CGSize tagSize = [self sizeForTitle:tagTitleModel.tagTitle withFont:((tagTitleModel.normalTitleFont.pointSize >= tagTitleModel.selectedTitleFont.pointSize)?tagTitleModel.normalTitleFont:tagTitleModel.selectedTitleFont)];
+                self.selectionIndicator.width = tagSize.width;
+            }else
+            {
+                self.selectionIndicator.width = self.tagItemSize.width;
+
+            } 
+        }
+        else if(self.selectionIndicator.centerX != cell.centerX) {
+            
+            [UIView animateKeyframesWithDuration:0.2 delay:0 options:UIViewKeyframeAnimationOptionLayoutSubviews animations:^{
+                [UIView addKeyframeWithRelativeStartTime:0 relativeDuration:0.5 animations:^{
+                    self.selectionIndicator.x = cell.x;
+                }];
+                
+                [UIView addKeyframeWithRelativeStartTime:0.5 relativeDuration:0.5 animations:^{
+                    self.selectionIndicator.width = cell.width;
+                }];
+                
+            } completion:^(BOOL finished) {
+                
             }];
+            
         }
         
         [collectionView selectItemAtIndexPath:indexPath animated:YES scrollPosition:UICollectionViewScrollPositionCenteredHorizontally];
@@ -416,7 +437,6 @@
 }
 - (NSTimer *)graceTimer
 {
-    
     if (self.graceTime) {
         if (!_graceTimer) {
             _graceTimer = [NSTimer timerWithTimeInterval:5.f target:self selector:@selector(updateViewControllersCaches) userInfo:nil repeats:YES];
@@ -438,28 +458,33 @@
 {
     if (!_selectionIndicator) {
         _selectionIndicator = [[UIView alloc]init];
-        _selectionIndicator.backgroundColor = self.selectedIndicatorColor;
+        _selectionIndicator.backgroundColor = [UIColor clearColor];
         
-        //1.如果设置了selectedIndicatorSize
-        if (![self isZeroSize:self.selectedIndicatorSize]) {
-            _selectionIndicator.frame = CGRectMake(0, self.tagViewHeight - self.selectedIndicatorSize.height, self.selectedIndicatorSize.width, self.selectedIndicatorSize.height);
-
-        }
-        //2.如果没有设置selectedIndicatorSize
-        else
-        {
-            //2.1 如果设置了tagItemSize
-            if (![self isZeroSize:self.tagItemSize]) {
-                _selectionIndicator.frame = CGRectMake(0, self.tagViewHeight - 2, self.tagItemSize.width, 2);
+        //1.使用固定的tagItemSize
+        if (![self isZeroSize:self.tagItemSize]) {
+            if ([self isZeroSize:self.selectedIndicatorSize]) { //如果未手动设定指示条宽高,则设置默认值
+                self.selectedIndicatorSize = CGSizeMake(self.tagItemSize.width, 2);
             }
-            //2.2 如果没有设置tagItemSize,则给默认值(100,2)
-            else
-            {
-                _selectionIndicator.frame = CGRectMake(0, self.tagViewHeight - 2, 50, 2);
-            }
-
+            _selectionIndicator.frame = CGRectMake(0, self.tagViewHeight - self.selectedIndicatorSize.height, self.tagItemSize.width, self.selectedIndicatorSize.height);
         }
-        
+        //2.使用自由文本宽度,默认设为第一个自由文本的size
+        else{
+            XBTagTitleModel *tagTitleModel = self.tagTitleModelArray[0];
+            CGSize tagSize = [self sizeForTitle:tagTitleModel.tagTitle withFont:((tagTitleModel.normalTitleFont.pointSize >= tagTitleModel.selectedTitleFont.pointSize)?tagTitleModel.normalTitleFont:tagTitleModel.selectedTitleFont)];
+            
+            if ([self isZeroSize:self.selectedIndicatorSize]) { //如果未手动设定指示条宽高,则设置默认值
+                self.selectedIndicatorSize = CGSizeMake(tagSize.width, 8);
+            }
+            
+            _selectionIndicator.frame = CGRectMake(0, self.tagViewHeight - self.selectedIndicatorSize.height, tagSize.width, self.selectedIndicatorSize.height);
+        }
+
+        UIView *sub = [[UIView alloc]init];
+        sub.autoresizingMask = UIViewAutoresizingFlexibleWidth|UIViewAutoresizingFlexibleHeight|UIViewAutoresizingFlexibleTopMargin|UIViewAutoresizingFlexibleBottomMargin|UIViewAutoresizingFlexibleLeftMargin|UIViewAutoresizingFlexibleRightMargin;
+        sub.backgroundColor = self.selectedIndicatorColor;
+        sub.frame = CGRectMake(0, 0, self.selectedIndicatorSize.width, self.selectedIndicatorSize.height);
+        sub.centerX = _selectionIndicator.centerX;
+        [_selectionIndicator addSubview:sub];
         [self.tagCollectionView addSubview:_selectionIndicator];
     }
 

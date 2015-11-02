@@ -27,6 +27,7 @@
 		1F6837761B9F321500411DBA /* XBCollectionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F6837751B9F321500411DBA /* XBCollectionViewController.m */; };
 		37044E3B1BA8FEFC0016104E /* UIView+XBExtension.m in Sources */ = {isa = PBXBuildFile; fileRef = 37044E3A1BA8FEFC0016104E /* UIView+XBExtension.m */; };
 		37044E3F1BA923310016104E /* DemoViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 37044E3E1BA923310016104E /* DemoViewController.xib */; };
+		37BFE74E1BE746FD00EFB6BA /* TabBarViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 37BFE74D1BE746FD00EFB6BA /* TabBarViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -66,6 +67,8 @@
 		37044E391BA8FEFC0016104E /* UIView+XBExtension.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+XBExtension.h"; sourceTree = "<group>"; };
 		37044E3A1BA8FEFC0016104E /* UIView+XBExtension.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+XBExtension.m"; sourceTree = "<group>"; };
 		37044E3E1BA923310016104E /* DemoViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DemoViewController.xib; sourceTree = "<group>"; };
+		37BFE74C1BE746FD00EFB6BA /* TabBarViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TabBarViewController.h; sourceTree = "<group>"; };
+		37BFE74D1BE746FD00EFB6BA /* TabBarViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TabBarViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -109,6 +112,8 @@
 				37044E3E1BA923310016104E /* DemoViewController.xib */,
 				1F46B3CE1B9C905F008BC480 /* TestViewController.h */,
 				1F46B3CF1B9C905F008BC480 /* TestViewController.m */,
+				37BFE74C1BE746FD00EFB6BA /* TabBarViewController.h */,
+				37BFE74D1BE746FD00EFB6BA /* TabBarViewController.m */,
 				1F46B39E19BB3A95008BC480 /* Images.xcassets */,
 				1F46B3A019BB3A95008BC480 /* LaunchScreen.xib */,
 				1F46B39119BB3A95008BC480 /* Supporting Files */,
@@ -293,6 +298,7 @@
 			files = (
 				1F46B3C41B9C800C008BC480 /* XBConst.m in Sources */,
 				1F6837621B9F169600411DBA /* XBTestImageViewController.m in Sources */,
+				37BFE74E1BE746FD00EFB6BA /* TabBarViewController.m in Sources */,
 				37044E3B1BA8FEFC0016104E /* UIView+XBExtension.m in Sources */,
 				1F6837721B9F2FCA00411DBA /* DemoViewController.m in Sources */,
 				1F68376B1B9F1E1400411DBA /* XBTestTableViewController.m in Sources */,

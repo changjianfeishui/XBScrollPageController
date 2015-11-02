@@ -35,7 +35,8 @@
     
     //设置自定义属性
     self.tagItemSize = CGSizeMake(110, 49);
-//    self.selectedIndicatorSize = CGSizeMake(50, 10);
+    
+//    self.selectedIndicatorSize = CGSizeMake(30, 8);
 //    self.selectedTitleColor = [UIColor blueColor];
 //    self.selectedTitleFont = [UIFont systemFontOfSize:18];
     
@@ -80,7 +81,7 @@
 - (void)viewWillAppear:(BOOL)animated
 {
     [super viewWillAppear:animated];
-    [self selectTagByIndex:2 animated:NO];
+//    [self selectTagByIndex:3 animated:YES];
 
 }
 

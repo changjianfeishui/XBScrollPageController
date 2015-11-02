@@ -9,6 +9,7 @@
 #import "AppDelegate.h"
 #import "DemoViewController.h"
 #import "XBConst.h"
+#import "TabBarViewController.h"
 @interface AppDelegate ()
 
 @end
@@ -20,10 +21,10 @@
     self.window = [[UIWindow alloc]initWithFrame:XBScreenBounds];
 
     
-    DemoViewController *vc = [[DemoViewController alloc]init];
-    UINavigationController *nav = [[UINavigationController alloc]initWithRootViewController:vc];
+//    DemoViewController *vc = [[DemoViewController alloc]init];
+//    UINavigationController *nav = [[UINavigationController alloc]initWithRootViewController:vc];
     
-    self.window.rootViewController = nav;
+    self.window.rootViewController = [TabBarViewController new];
     [self.window makeKeyAndVisible];
     return YES;
 }
