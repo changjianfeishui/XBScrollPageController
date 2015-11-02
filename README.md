@@ -2,10 +2,10 @@
 iOS分页控制器,只需传入标题数组和控制器类名数组即可.
 ##Bug修复
 感谢[@sn5diphone6](https://github.com/sn5diphone6)的反馈,现修复了一个在同一项目中使用多个ScrollPage时,除第一个外,其他指示条出现偏移的问题.
-##V2.0版本说明
+##V3.1版本说明
 
-* 重构了代码结构,使源代码结构更加清晰.
-* 目前仅实现了固定tagItemSize情况下手势拖动page时指示条的跟随动画,其他情况由于水平有限暂未实现,欢迎提出技术参考.
+* 现在使用自由文本宽度作为tagSize时,指示条宽度能随文本宽度变化而变化了
+* 修复了某些情况下,指示条显示不正确的问题
 
 
 ##特性
@@ -74,7 +74,10 @@ iOS分页控制器,只需传入标题数组和控制器类名数组即可.
 * -(void)reloadDataWith:(NSArray *)titleArray andSubViewdisplayClasses:(NSArray *)classes 
 * -(void)reloadDataWith:(NSArray *)titleArray andSubViewdisplayClasses:(NSArray *)classes withParams:(NSArray *)params;
 
+##V2.0版本说明
 
+* 重构了代码结构,使源代码结构更加清晰.
+* 目前仅实现了固定tagItemSize情况下手势拖动page时指示条的跟随动画,其他情况由于水平有限暂未实现,欢迎提出技术参考.
 ##V1.x版本说明
 
 紧急适配iOS7,之前的问题是源码中调用一个系统api,该api仅支持iOS8.

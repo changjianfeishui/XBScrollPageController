@@ -81,7 +81,7 @@
 - (void)viewWillAppear:(BOOL)animated
 {
     [super viewWillAppear:animated];
-//    [self selectTagByIndex:3 animated:YES];
+    [self selectTagByIndex:3 animated:YES];
 
 }
 
