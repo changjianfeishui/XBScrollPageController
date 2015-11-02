@@ -213,9 +213,9 @@
         
         UICollectionViewCell *cell = [collectionView cellForItemAtIndexPath:indexPath];
 
-        if (self.selectionIndicator.centerX != cell.centerX) {
+        if (self.selectionIndicator.x != cell.x) {
             [UIView animateWithDuration:0.3 animations:^{
-                self.selectionIndicator.centerX = cell.centerX;
+                self.selectionIndicator.x = cell.x;
             }];
         }
         
