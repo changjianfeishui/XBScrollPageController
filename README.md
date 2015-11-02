@@ -1,6 +1,7 @@
 # XBScrollPageController
 iOS分页控制器,只需传入标题数组和控制器类名数组即可.
-
+##Bug修复
+感谢[@sn5diphone6](https://github.com/sn5diphone6)的反馈,现修复了一个在同一项目中使用多个ScrollPage时,除第一个外,其他指示条出现偏移的问题.
 ##V2.0版本说明
 
 * 重构了代码结构,使源代码结构更加清晰.
