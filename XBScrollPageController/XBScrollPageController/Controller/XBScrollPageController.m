@@ -225,18 +225,18 @@
         }
         else if(self.selectionIndicator.centerX != cell.centerX) {
             
-            [UIView animateKeyframesWithDuration:0.2 delay:0 options:UIViewKeyframeAnimationOptionLayoutSubviews animations:^{
-                [UIView addKeyframeWithRelativeStartTime:0 relativeDuration:0.5 animations:^{
-                    self.selectionIndicator.x = cell.x;
-                }];
+            // [UIView animateKeyframesWithDuration:0.2 delay:0 options:UIViewKeyframeAnimationOptionLayoutSubviews animations:^{
+            //     [UIView addKeyframeWithRelativeStartTime:0 relativeDuration:0.5 animations:^{
+            //         self.selectionIndicator.x = cell.x;
+            //     }];
                 
-                [UIView addKeyframeWithRelativeStartTime:0.5 relativeDuration:0.5 animations:^{
-                    self.selectionIndicator.width = cell.width;
-                }];
+            //     [UIView addKeyframeWithRelativeStartTime:0.5 relativeDuration:0.5 animations:^{
+            //         self.selectionIndicator.width = cell.width;
+            //     }];
                 
-            } completion:^(BOOL finished) {
+            // } completion:^(BOOL finished) {
                 
-            }];
+            // }];
             
         }
         
