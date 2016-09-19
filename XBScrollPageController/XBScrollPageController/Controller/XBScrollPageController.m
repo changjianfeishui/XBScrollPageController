@@ -271,9 +271,10 @@
 
 
 #pragma - mark UIScrollerViewDelegate
-- (void)scrollViewDidEndDecelerating:(UIScrollView *)scrollView
+- (void)scrollViewDidEndDecelerating:(UICollectionView *)scrollView
 {
     if (scrollView == self.pageCollectionView) {
+        [scrollView reloadData];
         int index = scrollView.contentOffset.x / self.pageCollectionView.frame.size.width;
         NSIndexPath *indexPath = [NSIndexPath indexPathForItem:index inSection:0];
         [self collectionView:self.tagCollectionView didSelectItemAtIndexPath:indexPath];
