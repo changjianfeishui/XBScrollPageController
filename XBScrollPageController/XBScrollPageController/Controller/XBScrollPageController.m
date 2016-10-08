@@ -243,7 +243,7 @@
         [collectionView selectItemAtIndexPath:indexPath animated:YES scrollPosition:UICollectionViewScrollPositionCenteredHorizontally];
         
         [self.pageCollectionView scrollToItemAtIndexPath:indexPath atScrollPosition:UICollectionViewScrollPositionRight animated:labs(gap)>1?self.gapAnimated:YES];
-
+        [self.pageCollectionView reloadData];
         
     }
 }
