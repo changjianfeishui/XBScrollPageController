@@ -1,6 +1,8 @@
 # XBScrollPageController
 iOS分页控制器,只需传入标题数组和控制器类名数组即可.
-##Bug修复
+
+## Bug修复
+
 感谢[@sn5diphone6](https://github.com/sn5diphone6)的反馈,现修复了一个在同一项目中使用多个ScrollPage时,除第一个外,其他指示条出现偏移的问题.
 ##V3.1版本说明
 
@@ -8,7 +10,7 @@ iOS分页控制器,只需传入标题数组和控制器类名数组即可.
 * 修复了某些情况下,指示条显示不正确的问题
 
 
-##特性
+## 特性
 * 直接继承XBScrollPageController控制器即可,所有属性及方法可通过点语法调用
 * 增加了控制器缓存,并可自定义缓存时间,一段时间内未被重新展示的标签对应的控制器将被销毁(详见属性说明)
 
@@ -17,7 +19,7 @@ iOS分页控制器,只需传入标题数组和控制器类名数组即可.
 
 ![效果图](https://github.com/changjianfeishui/XBScrollPageController/raw/master/1.gif)
 
-##使用方法
+## 使用方法
 
 1. 在项目中导入**XBScrollPageController**文件夹(包含MVC,及常量定义文件).
 
@@ -50,8 +52,8 @@ iOS分页控制器,只需传入标题数组和控制器类名数组即可.
     
     
 
-##部分属性方法说明
-###字体及颜色
+## 部分属性方法说明
+### 字体及颜色
 
 * normalTitleFont: 正常(非选中)标签字体  default is 14,
 
@@ -70,17 +72,17 @@ iOS分页控制器,只需传入标题数组和控制器类名数组即可.
 * gapAnimated:跨越多个标签进行切换时,page是否动画,默认为NO,建议不开启,开启后中间过渡的控制器都会加载
 * backgroundColor: 标签展示的背景色
 
-###刷新方法:
+### 刷新方法:
 * -(void)reloadDataWith:(NSArray *)titleArray andSubViewdisplayClasses:(NSArray *)classes 
 * -(void)reloadDataWith:(NSArray *)titleArray andSubViewdisplayClasses:(NSArray *)classes withParams:(NSArray *)params;
 
-##V2.0版本说明
+## V2.0版本说明
 
 * 重构了代码结构,使源代码结构更加清晰.
 * 目前仅实现了固定tagItemSize情况下手势拖动page时指示条的跟随动画,其他情况由于水平有限暂未实现,欢迎提出技术参考.
 
 
-##V1.x版本说明
+## V1.x版本说明
 
 紧急适配iOS7,之前的问题是源码中调用一个系统api,该api仅支持iOS8.
 欢迎反馈bug,联系方式见末尾.
